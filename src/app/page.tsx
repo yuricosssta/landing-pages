@@ -34,96 +34,143 @@ export default function Home() {
       </header>
 
       <main>
-        {/* 2. Primeira Dobra (Hero Section) - Divisão estrutural estrita 50/50 */}
-        <section className="relative w-full bg-white border-b border-border">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2">
-
-            {/* Coluna de Texto (Pilar Esquerdo) */}
-            <div className="px-4 py-24 md:pr-12 lg:pr-24 flex flex-col justify-center space-y-8 border-r border-transparent md:border-border">
-              <div className="space-y-4">
-                <div className="h-1 w-12 bg-primary mb-6" /> {/* Elemento de tração visual */}
-                <h1 className="text-4xl md:text-5xl font-bold text-primary leading-tight tracking-tight">
-                  Engenharia e Construção com Rigor Técnico.
-                </h1>
-                <p className="text-lg text-muted-foreground font-normal leading-relaxed">
-                  Projetos estruturais, investigações patológicas e execução de obras. Monitoramento em tempo real do avanço físico-financeiro via ecossistema Cazuá.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link
-                  href="#contato"
-                  className="bg-primary text-primary-foreground px-6 py-3.5 rounded-sm font-semibold text-center hover:bg-primary/90 transition-colors"
-                >
-                  Solicitar Avaliação Técnica
-                </Link>
-                <Link
-                  href="#cazua"
-                  className="border border-border text-foreground px-6 py-3.5 rounded-sm font-semibold text-center hover:bg-secondary transition-colors"
-                >
-                  Especificações do Sistema
-                </Link>
-              </div>
-            </div>
-
-            {/* Coluna de Imagem (Pilar Direito) */}
-            <div className="relative h-[400px] md:h-auto w-full bg-secondary">
+        {/* 2. Primeira Dobra (Hero Section) - Layout fluido e imersivo */}
+        <section className="relative w-full bg-white border-b border-border overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            
+            {/* Imagem Hero fluida - ocupa largura total no mobile, metade no desktop com texto sobreposto */}
+            <div className="relative md:h-[600px] h-[450px] md:h-[550px] lg:h-[650px] w-full bg-secondary">
               <Image
                 src="/assets/hero-obra.webp"
                 alt="Execução de obra gerenciada pela Costa Marinho"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority 
-                className="object-cover grayscale-[20%] contrast-125 mix-blend-multiply"
+                className="object-cover"
               />
-              {/* Overlay técnico geométrico */}
-              <div className="absolute inset-0 border-[16px] border-white/10 pointer-events-none" />
+              {/* Gradiente sutil para legibilidade do texto */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-transparent md:from-primary/80 md:via-primary/40 md:to-transparent" />
+              
+              {/* Conteúdo textual sobreposto à imagem */}
+              <div className="absolute inset-0 flex items-center px-4 md:px-12 lg:px-24 z-10">
+                <div className="max-w-2xl text-white space-y-6">
+                  <div className="h-1 w-12 bg-white/80 mb-4" />
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight drop-shadow-lg">
+                    Engenharia e Construção com Rigor Técnico.
+                  </h1>
+                  <p className="text-lg md:text-xl text-white/90 font-normal leading-relaxed drop-shadow-md max-w-xl">
+                    Projetos estruturais, investigações patológicas e execução de obras. Monitoramento em tempo real do avanço físico-financeiro via ecossistema Cazuá.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <Link
+                      href="#contato"
+                      className="bg-white text-primary px-6 py-3.5 rounded-sm font-semibold text-center hover:bg-white/90 transition-colors drop-shadow-lg"
+                    >
+                      Solicitar Avaliação Técnica
+                    </Link>
+                    <Link
+                      href="#cazua"
+                      className="border-2 border-white/50 text-white px-6 py-3.5 rounded-sm font-semibold text-center hover:bg-white/10 hover:border-white transition-colors backdrop-blur-sm"
+                    >
+                      Especificações do Sistema
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Detalhe geométrico sutil no canto */}
+              <div className="absolute bottom-0 right-0 md:bottom-8 md:right-8 w-24 h-24 border-b-2 border-r-2 border-white/20 pointer-events-none" />
+            </div>
+
+            {/* Indicador de scroll sutil */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-12 md:bottom-12 animate-bounce">
+              <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
             </div>
 
           </div>
         </section>
 
-        {/* 3. O Diferencial Tecnológico (Seção Cazuá) */}
-        <section id="cazua" className="py-24 bg-background">
-          <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12 items-center">
-
-            <div className="md:col-span-5 order-2 md:order-1 relative h-[600px] w-full bg-card rounded-sm border border-border flex items-center justify-center p-8 shadow-sm">
-              <Image
-                src="/assets/template-cazua.webp"
-                alt="Interface do Sistema Cazuá"
-                fill
-                className="object-contain p-4"
-              />
-            </div>
-
-            <div className="md:col-span-7 order-1 md:order-2 space-y-8 lg:pl-12">
-              <h2 className="text-3xl font-bold text-primary flex items-center gap-4">
-                <span className="w-8 h-1 bg-primary hidden sm:block"></span>
-                Transparência e Controle de Dados
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">
-                A Costa Marinho Engenharia opera sob infraestrutura tecnológica própria. O SaaS Cazuá garante acesso ininterrupto aos parâmetros da sua obra:
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-6 pt-4">
-                <div className="border border-border p-6 rounded-sm bg-card hover:border-primary/50 transition-colors">
-                  <Camera className="w-6 h-6 text-primary mb-4" />
-                  <strong className="block text-foreground mb-2">Diário de Obra Digital</strong>
-                  <span className="text-muted-foreground text-sm block">Relatórios fotográficos e registro descritivo de atividades executadas in loco.</span>
-                </div>
-                <div className="border border-border p-6 rounded-sm bg-card hover:border-primary/50 transition-colors">
-                  <LineChart className="w-6 h-6 text-primary mb-4" />
-                  <strong className="block text-foreground mb-2">Avanço Físico-Financeiro</strong>
-                  <span className="text-muted-foreground text-sm block">Acompanhamento de curva S, equalizando cronograma planejado e realizado.</span>
-                </div>
-                <div className="border border-border p-6 rounded-sm bg-card hover:border-primary/50 transition-colors sm:col-span-2 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                  <div className="p-3 bg-secondary rounded-sm">
-                    <FileText className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <strong className="block text-foreground">Gestão de Documentos e Projetos</strong>
-                    <span className="text-muted-foreground text-sm">Repositório centralizado para laudos, projetos básicos, executivos e ARTs.</span>
+        {/* 3. O Diferencial Tecnológico (Seção Cazuá) - Layout assimétrico e fluido */}
+        <section id="cazua" className="py-24 bg-background relative">
+          <div className="max-w-7xl mx-auto px-4">
+            
+            {/* Elemento decorativo de fundo sutil */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none hidden lg:block" />
+            
+            <div className="relative grid md:grid-cols-12 gap-12 items-start">
+              
+              {/* Imagem do Sistema Cazuá - fluida, sem container rígido */}
+              <div className="md:col-span-6 order-2 md:order-1 relative">
+                <div className="relative aspect-[4/3] md:aspect-[3/4] bg-card rounded-2xl border border-border shadow-2xl overflow-hidden">
+                  <Image
+                    src="/assets/template-cazua.webp"
+                    alt="Interface do Sistema Cazuá - Dashboard de monitoramento de obras"
+                    fill
+                    className="object-contain p-6 md:p-10 transition-transform duration-700 hover:scale-[1.02]"
+                  />
+                  {/* Badge flutuante indicando "Live" */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm border border-border px-3 py-1.5 rounded-full text-xs font-medium text-primary flex items-center gap-1.5 shadow-lg">
+                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                    Dados em Tempo Real
                   </div>
                 </div>
+                {/* Elementos decorativos flutuantes */}
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 border-2 border-primary/20 rounded-full blur-xl hidden lg:block" />
+                <div className="absolute top-20 -right-8 w-24 h-24 border-2 border-primary/10 rounded-full blur-xl hidden lg:block" />
+              </div>
+
+              {/* Conteúdo textual */}
+              <div className="md:col-span-6 order-1 md:order-2 space-y-8 lg:pl-8 pt-8 md:pt-0">
+                <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium">
+                  <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                  Tecnologia Própria
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-primary flex items-center gap-4">
+                  <span className="w-8 h-1 bg-primary hidden sm:block"></span>
+                  Transparência e Controle de Dados
+                </h2>
+                <p className="text-muted-foreground leading-relaxed text-lg">
+                  A Costa Marinho Engenharia opera sob infraestrutura tecnológica própria. O SaaS Cazuá garante acesso ininterrupto aos parâmetros da sua obra:
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-4 pt-4">
+                  <div className="border border-border p-6 rounded-xl bg-card hover:border-primary/50 hover:shadow-lg transition-all duration-300 group">
+                    <div className="p-3 bg-primary/10 rounded-lg w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                      <Camera className="w-5 h-5 text-primary" />
+                    </div>
+                    <strong className="block text-foreground mb-2">Diário de Obra Digital</strong>
+                    <span className="text-muted-foreground text-sm block">Relatórios fotográficos e registro descritivo de atividades executadas in loco.</span>
+                  </div>
+                  <div className="border border-border p-6 rounded-xl bg-card hover:border-primary/50 hover:shadow-lg transition-all duration-300 group">
+                    <div className="p-3 bg-primary/10 rounded-lg w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                      <LineChart className="w-5 h-5 text-primary" />
+                    </div>
+                    <strong className="block text-foreground mb-2">Avanço Físico-Financeiro</strong>
+                    <span className="text-muted-foreground text-sm block">Acompanhamento de curva S, equalizando cronograma planejado e realizado.</span>
+                  </div>
+                  <div className="border border-border p-6 rounded-xl bg-card hover:border-primary/50 hover:shadow-lg transition-all duration-300 group sm:col-span-2">
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                      <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
+                        <FileText className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <strong className="block text-foreground">Gestão de Documentos e Projetos</strong>
+                        <span className="text-muted-foreground text-sm">Repositório centralizado para laudos, projetos básicos, executivos e ARTs.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* CTA sutil */}
+                <Link
+                  href="#contato"
+                  className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                >
+                  Ver demonstração do sistema
+                  <ChevronRight className="w-5 h-5" />
+                </Link>
               </div>
             </div>
           </div>
